@@ -1,6 +1,10 @@
 function GameBoard() {
-  gameboard = ["O", "O", "O", "O", "0", "0", "0", "0", "O"];
+  gameboard = ["O", "O", "O", "X", "0", "0", "0", "0", "O"];
   return { gameboard };
+}
+
+function players(name) {
+  return { name };
 }
 
 const tictactoe = GameBoard();
@@ -9,9 +13,8 @@ displayBoard(tictactoe.gameboard);
 
 function displayBoard(board) {
   let table_data = document.getElementsByClassName("table-data")[0];
-  console.log(table_data);
-  const table = document.createElement('table');
- // table.innerHtml = " ";
+  const table = document.createElement("table");
+  table.innerHTML = " ";
   table.innerHTML = `
     <tr>
     <td>${board[0]}</td>
@@ -29,6 +32,5 @@ function displayBoard(board) {
     <td>${board[8]}</td>
   </tr>  
     `;
-    console.log(table)
- table_data.append(table);
+  table_data.append(table);
 }
