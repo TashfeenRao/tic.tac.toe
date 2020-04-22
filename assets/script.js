@@ -38,8 +38,7 @@ const GameBoard = (() => {
   };
 
   const move = (index, token = "X") => {
-
-    if (board[index] === '') {
+    if (board[index] === "") {
       board[index] = token;
     } else {
       alert("Position taken");
@@ -50,7 +49,6 @@ const GameBoard = (() => {
 })();
 
 // play
-
-GameBoard.move(2);
+GameBoard.displayBoard()
+//GameBoard.move(2);
 //GameBoard.clearBoard();
-
