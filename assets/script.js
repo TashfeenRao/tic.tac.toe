@@ -3,7 +3,7 @@ const players = ((name, token)=>{
 })();
 
 const GameBoard = ( ()=>{
-  const board= [' ', 'O', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  const board= ['O', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'O']
  
   function displayBoard() {
     let table_data = document.getElementsByClassName("table-data")[0];
@@ -29,7 +29,7 @@ const GameBoard = ( ()=>{
     table_data.append(table);
   }
 
-return {board, displayBoard, clearBoard}
+return {board, displayBoard}
 })();
 
 
