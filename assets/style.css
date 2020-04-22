@@ -22,3 +22,7 @@ h1 {
   margin: auto;
   margin-left: 10px;
 }
+
+table p {
+  min-height:150px ;
+}
