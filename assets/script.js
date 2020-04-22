@@ -11,19 +11,19 @@ const GameBoard = ( ()=>{
     table.innerHTML = " ";
     table.innerHTML = `
       <tr>
-      <td>${this.board[0]}</td>
-      <td class="vert">${this.board[1]}</td>
-      <td>${this.board[2]}</td>
+      <td><p class="token">${this.board[0]}</p></td>
+      <td class="vert"><p class="token">${this.board[1]}</p></td>
+      <td><p class="token">${this.board[2]}</p></td>
     </tr>
     <tr>
-      <td class="hori">${this.board[3]}</td>
-      <td class="vert hori">${this.board[4]}</td>
-      <td class="hori">${this.board[5]}</td>
+      <td class="hori"><p class="token">${this.board[3]}</p></td>
+      <td class="vert hori"><p class="token">${this.board[4]}</p></td>
+      <td class="hori"><p class="token">${this.board[5]}</p></td>
     </tr>
     <tr>
-      <td>${this.board[6]}</td>
-      <td class="vert">${this.board[7]}</td>
-      <td>${this.board[8]}</td>
+      <td><p class="token">${this.board[6]}</p></td>
+      <td class="vert"><p class="token">${this.board[7]}</p></td>
+      <td><p class="token">${this.board[8]}</p></td>
     </tr>  
       `;
     table_data.append(table);
