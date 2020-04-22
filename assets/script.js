@@ -37,9 +37,24 @@ const GameBoard = (() => {
     displayBoard();
   };
 
-  return { board, displayBoard, clearBoard };
+  const move = (index, token = "X") => {
+    if (validMove(index)) {
+      board[index] = token;
+    } else {
+      alert("Position taken");
+    }
+  };
+
+  const validMove = (index) => {
+    if ((board[index] = "")) {
+      true;
+    } else {
+      false;
+    }
+  };
+  return { board, displayBoard, clearBoard, move };
 })();
 
 // play
 GameBoard.displayBoard();
-GameBoard.clearBoard();
+//GameBoard.clearBoard();
