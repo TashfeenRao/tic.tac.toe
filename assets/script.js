@@ -3,7 +3,7 @@ const players = ((name, token) => {
 })();
 
 const GameBoard = (() => {
-  const board = ["O", "O", "X", "X", "X", "O", "X", "O", "O"];
+  const board = ["O", "O", "", "X", "X", "O", "X", "O", "O"];
 
   const displayBoard = () => {
     let table_data = document.getElementsByClassName("table-data")[0];
@@ -38,23 +38,19 @@ const GameBoard = (() => {
   };
 
   const move = (index, token = "X") => {
-    if (validMove(index)) {
+
+    if (board[index] === '') {
       board[index] = token;
     } else {
       alert("Position taken");
     }
-  };
-
-  const validMove = (index) => {
-    if ((board[index] = "")) {
-      true;
-    } else {
-      false;
-    }
+    displayBoard();
   };
   return { board, displayBoard, clearBoard, move };
 })();
 
 // play
-GameBoard.displayBoard();
+
+GameBoard.move(2);
 //GameBoard.clearBoard();
+
