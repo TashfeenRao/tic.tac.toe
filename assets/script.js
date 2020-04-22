@@ -1,14 +1,14 @@
-const players = ((name, token)=>{
-  return {name, token}
+const players = ((name, token) => {
+  return { name, token };
 })();
 
-const GameBoard = ( ()=>{
-  const board= ['O', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'O']
- 
-  const  displayBoard = () =>{
+const GameBoard = (() => {
+  const board = ["O", "O", "X", "X", "X", "O", "X", "O", "O"];
+
+  const displayBoard = () => {
     let table_data = document.getElementsByClassName("table-data")[0];
     const table = document.createElement("table");
-    table.innerHTML = " ";
+    table_data.innerHTML = "";
     table.innerHTML = `
       <tr>
       <td><p class="token">${board[0]}</p></td>
@@ -27,16 +27,19 @@ const GameBoard = ( ()=>{
     </tr>  
       `;
     table_data.append(table);
-  }
+  };
 
-  //cons
+  const clearBoard = () => {
+    for (let i = 0; i < 9; i += 1) {
+      board[i] = "";
+    }
+    board;
+    displayBoard();
+  };
 
-return {board, displayBoard}
+  return { board, displayBoard, clearBoard };
 })();
 
-
-GameBoard.displayBoard()
+// play
+GameBoard.displayBoard();
 GameBoard.clearBoard();
-
-// play 
-
