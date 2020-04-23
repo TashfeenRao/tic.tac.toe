@@ -7,14 +7,21 @@ const GameBoard = (() => {
   const board = ["", "", "", "", "", "", "", "", ""];
 
   const displayBoard = () => {
+    let message = document.getElementById('p');
     let start_game = document.getElementById("start-game");
     let reset_game = document.getElementById("reset-game");
-    let form_info = document.getElementById("book-form");
+    let form_info = document.getElementById("players-form");
     start_game.style.display = "none";
     reset_game.style.display = "block";
     form_info.style.display = "none";
     let table_data = document.getElementsByClassName("table-data")[0];
     const table = document.createElement("table");
+    if(players.token === 'X'){
+      message.innerHTML = `${GameLogic.players_info[0]}'s turns`
+    }
+    else{
+      message.innerHTML = `${GameLogic.players_info[1]}'s turns`
+    }
     table_data.innerHTML = "";
     table.id = "board";
     table.innerHTML = `
@@ -48,13 +55,6 @@ const GameBoard = (() => {
     if (board[index] === "") {
       board[index] = players.token;
       players.token = players.token === "X" ? "O" : "X";
-      let message = document.getElementById('p')
-      if(players.token === 'X'){
-        message.innerHTML = `Player 1 turns`
-      }
-      else{
-        message.innerHTML = `Player 2 turns`
-      }
       displayBoard();
       GameLogic.chekwin(board);
     } else {
@@ -77,6 +77,16 @@ const GameLogic = (() => {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
+
+  const GameEnd = ()=> {
+   const action = document.getElementsByClassName('token')
+   console.log(action)
+
+   for (let i = 0; i < action.length; i += 1) {
+    action[i].onclick = null;
+   }
+  }
 
   const board_full = () => {
     slots = [];
@@ -109,14 +119,19 @@ const GameLogic = (() => {
         (pos_one === "O" && pos_two === "O" && pos_three === "O")
       ) {
         win_player = win_pos[0];
+        let message = document.getElementById('p');
         if (board[win_player] === "X") {
-          alert(`${players_info[0]} wins`);
+          
+          message.innerHTML = `${players_info[0]} wins`;
+          GameEnd()
         } else {
-          alert(`${players_info[1]} wins`);
+          message.innerHTML = `${players_info[1]} wins`;
+          GameEnd()
         }
       } else if (board_full() === true) {
         alert("Draw Game!");
         GameBoard.clearBoard();
+
       }
       false;
     });
@@ -125,10 +140,10 @@ const GameLogic = (() => {
   return { chekwin, WIN_POSSIBILITY, players_info };
 })();
 
-document.getElementById("book-form").addEventListener("submit", (event) => {
+document.getElementById("players-form").addEventListener("submit", (event) => {
   event.preventDefault();
-  let player_1 = document.getElementById("name1").value;
-  let player_2 = document.getElementById("name2").value;
+  let player_1 = players.name = document.getElementById('name1').value;
+  let player_2 = players.name = document.getElementById("name2").value;
   GameLogic.players_info.push(player_1, player_2);
   GameBoard.displayBoard();
   console.log(GameLogic.players_info);
