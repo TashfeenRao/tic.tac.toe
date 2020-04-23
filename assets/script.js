@@ -48,6 +48,13 @@ const GameBoard = (() => {
     if (board[index] === "") {
       board[index] = players.token;
       players.token = players.token === "X" ? "O" : "X";
+      let message = document.getElementById('p')
+      if(players.token === 'X'){
+        message.innerHTML = `Player 1 turns`
+      }
+      else{
+        message.innerHTML = `Player 2 turns`
+      }
       displayBoard();
       GameLogic.chekwin(board);
     } else {
@@ -88,7 +95,6 @@ const GameLogic = (() => {
     }
     return slots;
   };
-
   const chekwin = (board) => {
     WIN_POSSIBILITY.forEach((win_pos) => {
       const win_pos_one = win_pos[0];
@@ -121,9 +127,9 @@ const GameLogic = (() => {
 
 document.getElementById("book-form").addEventListener("submit", (event) => {
   event.preventDefault();
-  GameBoard.displayBoard();
   let player_1 = document.getElementById("name1").value;
   let player_2 = document.getElementById("name2").value;
   GameLogic.players_info.push(player_1, player_2);
+  GameBoard.displayBoard();
   console.log(GameLogic.players_info);
 });
