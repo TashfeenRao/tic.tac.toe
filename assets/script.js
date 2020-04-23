@@ -9,7 +9,6 @@ const players = ((name) => {
 
 const GameBoard = (() => {
   const board = ['', '', '', '', '', '', '', '', ''];
-
   const displayBoard = () => {
     const message = document.getElementById('p');
     const startGame = document.getElementById('start-game');
@@ -50,11 +49,9 @@ const GameBoard = (() => {
     for (let i = 0; i < 9; i += 1) {
       board[i] = '';
     }
-
     board;
     displayBoard();
   };
-
   const move = (index) => {
     if (board[index] === '') {
       board[index] = players.token;
@@ -65,7 +62,6 @@ const GameBoard = (() => {
       alert('Position Taken');
     }
   };
-
   return {
     board, displayBoard, clearBoard, move,
   };
@@ -83,15 +79,12 @@ const GameLogic = (() => {
     [0, 4, 8],
     [2, 4, 6],
   ];
-
-
   const GameEnd = () => {
     const action = document.getElementsByClassName('token');
     for (let i = 0; i < action.length; i += 1) {
       action[i].onclick = null;
     }
   };
-
   const boardFull = () => {
     const slots = [];
     GameBoard.board.forEach((x) => {
