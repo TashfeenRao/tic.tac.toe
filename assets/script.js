@@ -1,29 +1,32 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-unreachable */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-alert */
 const players = ((name) => {
-  const token = "X";
+  const token = 'X';
   return { name, token };
 })();
 
 const GameBoard = (() => {
-  const board = ["", "", "", "", "", "", "", "", ""];
+  const board = ['', '', '', '', '', '', '', '', ''];
 
   const displayBoard = () => {
-    let message = document.getElementById('p');
-    let start_game = document.getElementById("start-game");
-    let reset_game = document.getElementById("reset-game");
-    let form_info = document.getElementById("players-form");
-    start_game.style.display = "none";
-    reset_game.style.display = "block";
-    form_info.style.display = "none";
-    let table_data = document.getElementsByClassName("table-data")[0];
-    const table = document.createElement("table");
-    if(players.token === 'X'){
-      message.innerHTML = `${GameLogic.players_info[0]}'s turns`
+    const message = document.getElementById('p');
+    const startGame = document.getElementById('start-game');
+    const resetGame = document.getElementById('reset-game');
+    const formInfo = document.getElementById('players-form');
+    startGame.style.display = 'none';
+    resetGame.style.display = 'block';
+    formInfo.style.display = 'none';
+    const tableData = document.getElementsByClassName('table-data')[0];
+    const table = document.createElement('table');
+    if (players.token === 'X') {
+      message.innerHTML = `${GameLogic.playersInfo[0]}'s turns`;
+    } else {
+      message.innerHTML = `${GameLogic.playersInfo[1]}'s turns`;
     }
-    else{
-      message.innerHTML = `${GameLogic.players_info[1]}'s turns`
-    }
-    table_data.innerHTML = "";
-    table.id = "board";
+    tableData.innerHTML = '';
+    table.id = 'board';
     table.innerHTML = `
       <tr>
       <td><p class="token" onclick="GameBoard.move(0);" >${board[0]}</p></td>
@@ -41,32 +44,35 @@ const GameBoard = (() => {
       <td><p class="token" onclick="GameBoard.move(8);">${board[8]}</p></td>
     </tr>  
       `;
-    table_data.append(table);
+    tableData.append(table);
   };
   const clearBoard = () => {
     for (let i = 0; i < 9; i += 1) {
-      board[i] = "";
+      board[i] = '';
     }
+
     board;
     displayBoard();
   };
 
   const move = (index) => {
-    if (board[index] === "") {
+    if (board[index] === '') {
       board[index] = players.token;
-      players.token = players.token === "X" ? "O" : "X";
+      players.token = players.token === 'X' ? 'O' : 'X';
       displayBoard();
       GameLogic.chekwin(board);
     } else {
-      alert("Position taken");
+      alert('Position Taken');
     }
   };
 
-  return { board, displayBoard, clearBoard, move };
+  return {
+    board, displayBoard, clearBoard, move,
+  };
 })();
 
 const GameLogic = (() => {
-  players_info = [];
+  const playersInfo = [];
   const WIN_POSSIBILITY = [
     [0, 1, 2],
     [3, 4, 5],
@@ -79,72 +85,66 @@ const GameLogic = (() => {
   ];
 
 
-  const GameEnd = ()=> {
-   const action = document.getElementsByClassName('token')
-   console.log(action)
+  const GameEnd = () => {
+    const action = document.getElementsByClassName('token');
+    for (let i = 0; i < action.length; i += 1) {
+      action[i].onclick = null;
+    }
+  };
 
-   for (let i = 0; i < action.length; i += 1) {
-    action[i].onclick = null;
-   }
-  }
-
-  const board_full = () => {
-    slots = [];
+  const boardFull = () => {
+    const slots = [];
     GameBoard.board.forEach((x) => {
-      if (x === "") {
+      if (x === '') {
         slots.push(x);
       }
     });
 
     if (slots.length === 0) {
-      console.log("board full");
       return true;
-    } else {
-      console.log(slots.length + " slots remaining");
-      return false;
     }
+    return false;
+
     return slots;
   };
   const chekwin = (board) => {
-    WIN_POSSIBILITY.forEach((win_pos) => {
-      const win_pos_one = win_pos[0];
-      const win_pos_two = win_pos[1];
-      const win_pos_three = win_pos[2];
-      const pos_one = board[win_pos_one];
-      const pos_two = board[win_pos_two];
-      const pos_three = board[win_pos_three];
+    WIN_POSSIBILITY.forEach((winPos) => {
+      const winPosOne = winPos[0];
+      const winPosTwo = winPos[1];
+      const winPosThree = winPos[2];
+      const posOne = board[winPosOne];
+      const posTwo = board[winPosTwo];
+      const posThree = board[winPosThree];
 
       if (
-        (pos_one === "X" && pos_two === "X" && pos_three === "X") ||
-        (pos_one === "O" && pos_two === "O" && pos_three === "O")
+        (posOne === 'X' && posTwo === 'X' && posThree === 'X')
+        || (posOne === 'O' && posTwo === 'O' && posThree === 'O')
       ) {
-        win_player = win_pos[0];
-        let message = document.getElementById('p');
-        if (board[win_player] === "X") {
-          
-          message.innerHTML = `${players_info[0]} wins`;
-          GameEnd()
+        const winPlayer = winPos[0];
+        const message = document.getElementById('p');
+        if (board[winPlayer] === 'X') {
+          message.innerHTML = `${playersInfo[0]} wins`;
+          GameEnd();
         } else {
-          message.innerHTML = `${players_info[1]} wins`;
-          GameEnd()
+          message.innerHTML = `${playersInfo[1]} wins`;
+          GameEnd();
         }
-      } else if (board_full() === true) {
-        alert("Draw Game!");
+      } else if (boardFull() === true) {
+        alert('Draw Game!');
         GameBoard.clearBoard();
-
       }
       false;
     });
   };
 
-  return { chekwin, WIN_POSSIBILITY, players_info };
+  return { chekwin, WIN_POSSIBILITY, playersInfo };
 })();
 
-document.getElementById("players-form").addEventListener("submit", (event) => {
+document.getElementById('players-form').addEventListener('submit', (event) => {
   event.preventDefault();
-  let player_1 = players.name = document.getElementById('name1').value;
-  let player_2 = players.name = document.getElementById("name2").value;
-  GameLogic.players_info.push(player_1, player_2);
+  players.name = document.getElementById('name1').value;
+  GameLogic.playersInfo.push(players.name);
+  players.name = document.getElementById('name2').value;
+  GameLogic.playersInfo.push(players.name);
   GameBoard.displayBoard();
-  console.log(GameLogic.players_info);
 });
