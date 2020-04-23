@@ -1,21 +1,21 @@
 h1 {
-    text-align: center;
-  }
-  td {
-    width: 100px;
-    height: 100px;
-  }
-  table {
-    margin: 5px auto;
-  }
-  .vert {
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-  }
-  .hori {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-  }
+  text-align: center;
+}
+td {
+  width: 100px;
+  height: 100px;
+}
+table {
+  margin: 5px auto;
+}
+.vert {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+.hori {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
 
 .token {
   font-size: 100px;
@@ -24,7 +24,7 @@ h1 {
 }
 
 table p {
-  min-height:150px ;
+  min-height: 150px;
 }
 
 #reset-game {
@@ -34,6 +34,11 @@ table p {
 form {
   width: 100%;
 }
-form .input-info{
+form .input-info {
   display: flex;
+}
+
+.game-board,
+.table-data {
+  max-height: 300px;
 }

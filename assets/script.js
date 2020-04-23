@@ -9,8 +9,10 @@ const GameBoard = (() => {
   const displayBoard = () => {
     let start_game = document.getElementById("start-game");
     let reset_game = document.getElementById("reset-game");
+    let form_info = document.getElementById("book-form");
     start_game.style.display = "none";
     reset_game.style.display = "block";
+    form_info.style.display = "none";
     let table_data = document.getElementsByClassName("table-data")[0];
     const table = document.createElement("table");
     table_data.innerHTML = "";
