@@ -1,4 +1,4 @@
-const players = (() => {
+const players = ((name) => {
   const token = "X";
   return { name, token };
 })();
@@ -57,6 +57,7 @@ const GameBoard = (() => {
 })();
 
 const GameLogic = (() => {
+  players_info = [];
   const WIN_POSSIBILITY = [
     [0, 1, 2],
     [3, 4, 5],
@@ -68,7 +69,7 @@ const GameLogic = (() => {
     [2, 4, 6],
   ];
 
-  const board_full =()=> {
+  const board_full = () => {
     slots = [];
     GameBoard.board.forEach((x) => {
       if (x === "") {
@@ -84,7 +85,7 @@ const GameLogic = (() => {
       return false;
     }
     return slots;
-  }
+  };
 
   const chekwin = (board) => {
     WIN_POSSIBILITY.forEach((win_pos) => {
@@ -100,29 +101,27 @@ const GameLogic = (() => {
         (pos_one === "O" && pos_two === "O" && pos_three === "O")
       ) {
         win_player = win_pos[0];
-        alert(`player ${board[win_player]} wins`);
-
+        if (board[win_player] === "X") {
+          alert(`${players_info[0]} wins`);
+        } else {
+          alert(`${players_info[1]} wins`);
+        }
       } else if (board_full() === true) {
         alert("Draw Game!");
-        GameBoard.clearBoard()
+        GameBoard.clearBoard();
       }
       false;
     });
   };
 
-  return { chekwin, WIN_POSSIBILITY };
+  return { chekwin, WIN_POSSIBILITY, players_info };
 })();
 
-//GameBoard.displayBoard();
-
-//const cells = Array.from(document.getElementsByTagName("tbody"));
-
-//cells.forEach(function (element) {
-//  element.addEventListener("click", handleTurn);
-// function handleTurn(event) {
-//  GameBoard.move(event.target.getAttribute("atribute"))
-// GameBoard.displayBoard();
-// console.log(GameBoard.board)
-// }
-//});
-//GameBoard.clearBoard();
+document.getElementById("book-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  GameBoard.displayBoard();
+  let player_1 = document.getElementById("name1").value;
+  let player_2 = document.getElementById("name2").value;
+  GameLogic.players_info.push(player_1, player_2);
+  console.log(GameLogic.players_info);
+});
