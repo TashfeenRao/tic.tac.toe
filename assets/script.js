@@ -1,5 +1,6 @@
-const players = ((name, token) => {
-  return { name, token };
+const players = (() => {
+   const token = 'X';
+  return { name,token };
 })();
 
 const GameBoard = (() => {
@@ -41,9 +42,10 @@ const GameBoard = (() => {
     displayBoard();
   };
 
-  const move = (index, token = "X") => {
+  const move = (index) => {
     if (board[index] === "") {
-      board[index] = token;
+      board[index] = players.token;
+      players.token = players.token === 'X' ? 'O' : 'X'
       displayBoard();
       GameLogic.chekwin(board);
     } else {
