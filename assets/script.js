@@ -6,6 +6,10 @@ const GameBoard = (() => {
   const board = ["", "", "", "", "", "", "", "", ""];
 
   const displayBoard = () => {
+    let start_game = document.getElementById('start-game')
+    let reset_game = document.getElementById('reset-game')
+    start_game.style.display = "none";
+    reset_game.style.display = "block";
     let table_data = document.getElementsByClassName("table-data")[0];
     const table = document.createElement("table");
     table_data.innerHTML = "";
@@ -40,15 +44,17 @@ const GameBoard = (() => {
   const move = (index, token = "X") => {
     if (board[index] === "") {
       board[index] = token;
+      displayBoard();
       GameLogic.chekwin(board);
     } else {
       alert("Position taken");
     }
-    displayBoard();
+    
   };
 
   return { board, displayBoard, clearBoard, move };
 })();
+
 
 const GameLogic = (() => {
   const WIN_POSSIBILITY = [
@@ -77,16 +83,17 @@ const GameLogic = (() => {
       ) {
         win_player = win_pos[0]
         alert(`player ${board[win_player]} wins`)
-       // console.log(board[win_player])
       }
       false;
     });
   };
 
+
+
   return { chekwin, WIN_POSSIBILITY };
 })();
 
-GameBoard.displayBoard();
+//GameBoard.displayBoard();
 
 //const cells = Array.from(document.getElementsByTagName("tbody"));
 

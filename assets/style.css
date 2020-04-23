@@ -26,3 +26,7 @@ h1 {
 table p {
   min-height:150px ;
 }
+
+#reset-game {
+  display: none;
+}
