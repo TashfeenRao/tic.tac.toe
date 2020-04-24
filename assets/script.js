@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-expressions */
-/* eslint-disable no-unreachable */
 /* eslint-disable no-use-before-define */
-/* eslint-disable no-alert */
 const players = ((name) => {
   const token = 'X';
   return { name, token };
@@ -9,8 +7,8 @@ const players = ((name) => {
 
 const GameBoard = (() => {
   const board = ['', '', '', '', '', '', '', '', ''];
+  const message = document.getElementById('p');
   const displayBoard = () => {
-    const message = document.getElementById('p');
     const startGame = document.getElementById('start-game');
     const resetGame = document.getElementById('reset-game');
     const formInfo = document.getElementById('players-form');
@@ -51,6 +49,7 @@ const GameBoard = (() => {
     }
     board;
     displayBoard();
+    GameLogic.winArr = [];
   };
   const move = (index) => {
     if (board[index] === '') {
@@ -59,7 +58,7 @@ const GameBoard = (() => {
       displayBoard();
       GameLogic.chekwin(board);
     } else {
-      alert('Position Taken');
+      message.innerHTML = 'Position taken';
     }
   };
   return {
@@ -68,7 +67,9 @@ const GameBoard = (() => {
 })();
 
 const GameLogic = (() => {
+  const message = document.getElementById('p');
   const playersInfo = [];
+  let winArr = [];
   const WIN_POSSIBILITY = [
     [0, 1, 2],
     [3, 4, 5],
@@ -85,22 +86,18 @@ const GameLogic = (() => {
       action[i].onclick = null;
     }
   };
-  const boardFull = () => {
+  const freeBoard = () => {
     const slots = [];
     GameBoard.board.forEach((x) => {
       if (x === '') {
         slots.push(x);
       }
     });
-
-    if (slots.length === 0) {
-      return true;
-    }
-    return false;
-
     return slots;
   };
   const chekwin = (board) => {
+    const ResetArr = [];
+    winArr = ResetArr;
     WIN_POSSIBILITY.forEach((winPos) => {
       const winPosOne = winPos[0];
       const winPosTwo = winPos[1];
@@ -113,8 +110,8 @@ const GameLogic = (() => {
         (posOne === 'X' && posTwo === 'X' && posThree === 'X')
         || (posOne === 'O' && posTwo === 'O' && posThree === 'O')
       ) {
+        winArr.push(winPos);
         const winPlayer = winPos[0];
-        const message = document.getElementById('p');
         if (board[winPlayer] === 'X') {
           message.innerHTML = `${playersInfo[0]} wins`;
           GameEnd();
@@ -122,15 +119,23 @@ const GameLogic = (() => {
           message.innerHTML = `${playersInfo[1]} wins`;
           GameEnd();
         }
-      } else if (boardFull() === true) {
-        alert('Draw Game!');
-        GameBoard.clearBoard();
+      } else if (freeBoard().length === 0) {
+        chekDraw();
       }
       false;
     });
   };
 
-  return { chekwin, WIN_POSSIBILITY, playersInfo };
+  const chekDraw = () => {
+    if (winArr.length === 0) {
+      message.innerHTML = 'Draw Game';
+      GameEnd();
+    }
+  };
+
+  return {
+    chekwin, WIN_POSSIBILITY, playersInfo, winArr,
+  };
 })();
 
 document.getElementById('players-form').addEventListener('submit', (event) => {
