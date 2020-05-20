@@ -89,9 +89,7 @@ const GameLogic = (() => {
   const freeBoard = () => {
     const slots = [];
     GameBoard.board.forEach((x) => {
-      if (x === '') {
-        slots.push(x);
-      }
+      if (x === '') slots.push(x);
     });
     return slots;
   };
@@ -119,9 +117,7 @@ const GameLogic = (() => {
           message.innerHTML = `${playersInfo[1]} wins`;
           GameEnd();
         }
-      } else if (freeBoard().length === 0) {
-        chekDraw();
-      }
+      } else if (freeBoard().length === 0) chekDraw();
       false;
     });
   };
