@@ -16,6 +16,5 @@ test('Clear the board', () => {
 
 test('Add token to board ', () => {
   gameBorad.move(1);
-  console.log(gameBorad.board);
   expect(gameBorad.board).toEqual(['', 'X', '', '', '', '', '', '', '']);
 });
