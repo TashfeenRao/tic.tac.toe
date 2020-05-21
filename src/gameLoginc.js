@@ -75,7 +75,7 @@ const GameLogic = (() => {
   };
 
   return {
-    chekwin, WIN_POSSIBILITY, playersInfo, winArr,
+    chekwin, WIN_POSSIBILITY, playersInfo, winArr, freeBoard,
   };
 })();
 
