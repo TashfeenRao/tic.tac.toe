@@ -1,10 +1,9 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-expressions */
-/* eslint-disable no-use-before-define */
 import GameBoard from './gameBorad';
 
 const GameLogic = (() => {
-  const message = document.getElementById('p');
   const playersInfo = [];
   let winArr = [];
   const WIN_POSSIBILITY = [
@@ -54,9 +53,11 @@ const GameLogic = (() => {
         winArr.push(winPos);
         const winPlayer = winPos[0];
         if (board[winPlayer] === 'X') {
+          const message = document.getElementById('p');
           message.innerHTML = `${playersInfo[0]} wins`;
           GameEnd();
         } else {
+          const message = document.getElementById('p');
           message.innerHTML = `${playersInfo[1]} wins`;
           GameEnd();
         }
@@ -69,6 +70,7 @@ const GameLogic = (() => {
 
   const chekDraw = () => {
     if (winArr.length === 0) {
+      const message = document.getElementById('p');
       message.innerHTML = 'Draw Game';
       GameEnd();
     }
