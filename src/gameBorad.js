@@ -49,15 +49,12 @@ const GameBoard = (() => {
       board[i] = '';
     }
     board;
-    displayBoard();
     GameLogic.winArr = [];
   };
   const move = (index) => {
     if (board[index] === '') {
       board[index] = players.token;
       players.token = players.token === 'X' ? 'O' : 'X';
-      displayBoard();
-      GameLogic.chekwin(board);
     } else {
       message.innerHTML = 'Position taken';
     }
