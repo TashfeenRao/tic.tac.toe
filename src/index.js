@@ -1,5 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-use-before-define */
+
+import style from './style.css';
+import bottstrap from './bootstrap.min.css';
+
 const players = ((name) => {
   const token = 'X';
   return { name, token };
