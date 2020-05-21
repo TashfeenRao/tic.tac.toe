@@ -8,7 +8,7 @@ test('check win possibilities', () => {
   expect(GameLogic.WIN_POSSIBILITY.length).toEqual(8);
 });
 
-test('check if there are freeBoard', () => {
+test('check if there are freeBoard remaining', () => {
   expect(GameLogic.freeBoard().length).toEqual(9);
 });
 

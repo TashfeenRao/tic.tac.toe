@@ -1,6 +1,6 @@
 import gameBorad from '../src/gameBorad';
 
-test('The board should load empy', () => {
+test('The board should load empty', () => {
   expect(gameBorad.board).toEqual(['', '', '', '', '', '', '', '', '']);
 });
 

@@ -23,7 +23,9 @@ https://certilremy.github.io/.../
 
 ## External library 
 
-* None
+* Webpack 
+* Jest for testing
+* Babel
 
 
 ## Using the app in development 
@@ -38,11 +40,23 @@ $ git@github.com:TashfeenRao/tic.tac.toe.git
 $ cd library
  ```
 
-   And run 
-
+And run this to install dependencies 
 ```
 $ npm install 
 ```
+
+Run this to compile the package with webpack
+
+```
+$ npm run dev 
+```
+
+To run the tests 
+
+```
+$ npm run test
+```
+
 
 To start the server you don't need other special server you can go to the project folder ans click the index.html or install live server extention if you're using vsCode
 
@@ -53,4 +67,4 @@ To start the server you don't need other special server you can go to the projec
 ## Contribution 
 
 If you want to contribute to this project you're welcome .
-Follow the github code of conduite fork this repot and open your pull request. 
+Follow the github runles and fork this repot and open your pull request. 
