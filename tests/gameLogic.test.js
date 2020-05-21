@@ -25,3 +25,17 @@ test('check if there is a winner', () => {
   GameLogic.chekwin(GameBoard.board = board);
   expect(winLabel.innerHTML).toEqual('Tashfeen wins');
 });
+
+test('check for Draw Game', () => {
+  players.name = 'Tashfeen';
+  GameLogic.playersInfo.push(players.name);
+  players.name = 'Remy';
+  GameLogic.playersInfo.push(players.name);
+  document.body.innerHTML = '<div>'
+  + '  <h2 id="p" > </h2>'
+  + '</div>';
+  const winLabel = document.getElementById('p');
+  const board = ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'O'];
+  GameLogic.chekwin(GameBoard.board = board);
+  expect(winLabel.innerHTML).toEqual('Draw Game');
+});
