@@ -1,3 +1,4 @@
+/* eslint-disable no-self-assign */
 /* eslint-disable no-use-before-define */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-expressions */
@@ -19,11 +20,7 @@ const GameLogic = (() => {
   const GameEnd = () => {
     const squares = document.querySelectorAll('.token');
     squares.forEach((token) => {
-      token.removeEventListener('click', () => {
-        const position = token.getAttribute('data-id');
-        GameBoard.move(position);
-        return false;
-      });
+      token.outerHTML = token.outerHTML;
     });
   };
   const freeBoard = () => {
