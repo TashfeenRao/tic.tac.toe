@@ -1,5 +1,23 @@
-#   Tic-Tac-Toe
-This is a titc-tac-toe game with With Java script. In this version you can only play with your friend no AI yet. Enter your name and tel your friend enter his name and start playing.
+<h1 align="center">
+  <br>
+    Tic Tac Toe
+  <br>
+</h1>
+
+<h4 align="center">The project is about a tic-tac-toe game built using Javascript. In this game, players can only play with their friends. Enter your name and tell your friend to enter his name and start playing. One who got write combinations first wins.
+</h4>
+</br>
+
+![Contributors](https://img.shields.io/badge/Contributor-Tashfeen-green)
+![build](https://img.shields.io/badge/build-passing-green)
+![NPM](https://img.shields.io/badge/NPM-14.01-green)
+![npm bundle size](https://img.shields.io/bundlephobia/min/react?color=green)
+![Version](https://img.shields.io/badge/version-1.0.0-green)
+![Hackage-Deps](https://img.shields.io/hackage-deps/v/json)
+![Issues](https://img.shields.io/badge/issues-0-green)
+![Twitter Follow](https://img.shields.io/twitter/follow/TashfeenDev?label=Tashfeen&style=social)
+
+</br>
 
 <p align="center">
     <img src="final.png">
@@ -46,11 +64,17 @@ $ npm install
 
 To start the server you don't need other special server you can go to the project folder ans click the index.html or install live server extention if you're using vsCode
 
-## Author 
 
-* Certil Remy    Github : https://github.com/certilremy
-* Tashfeen Rao   Github : https://github.com/TashfeenRao
-## Contribution 
-
-If you want to contribute to this project you're welcome .
-Follow the github code of conduite fork this repot and open your pull request. 
+## Author
+---
+[Tashfeen Rao](https://tashfeenrao.github.io/personal-portfolio/) &nbsp;&middot;&nbsp;
+</br>
+Email: tashfeendev@gmail.com &nbsp;&middot;&nbsp;
+</br>
+AngelList [TashfeenRao](https://angel.co/u/tashfeen-rao) &nbsp;&middot;&nbsp;
+</br>
+LinkedIn [Tashfeen Rao](https://www.linkedin.com/in/tashfeen-rao/) &nbsp;&middot;&nbsp;
+</br>
+Twitter [@TashfeenDev](https://twitter.com/TashfeenDev) &nbsp;&middot;&nbsp;
+</br>
+collaborater Certil Remy    Github : https://github.com/certilremy
